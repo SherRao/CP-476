@@ -1,13 +1,20 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+    <title>CP 476 Project</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
-    <?php include 'php/main.php';?>
+    <div class="app-container">
+        <h1>Student Grade Calculator</h1>
+        <?php include 'main.php';?>
+    </div>
 </body>
 </html>
