@@ -6,8 +6,8 @@
         $dbname = "myDB";
 
         $connection = new mysqli($servername, $username, $password, $dbname);
-        if ($connection->connectionect_error) {
-            die("Error! Connection failed: " . $connection->connectionect_error);
+        if ($connection->connect_errno) {
+            die("Error! Connection failed: " . $connection->connect_errno);
         }
 
         return $connection;
