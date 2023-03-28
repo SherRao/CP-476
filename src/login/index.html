@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
-        header("Location: index.html", TRUE, 301);
+        header("Location: http://localhost/index.html", TRUE, 301);
         exit();
     }
 ?>
@@ -23,7 +23,7 @@
         <section>
             <div class="login-container">
                 <h2> Please Log In </h2>
-
+                <div id="error-message"></div>
                 <form id="login-form" method="POST" action="#">
                     <div>
                         <label for="username">Username: </label>

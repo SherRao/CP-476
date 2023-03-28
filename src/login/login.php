@@ -35,7 +35,6 @@ function handlePostRequest() {
     $databasePass = $_POST["password"];
     $loggedIn = testDbConnection($DATABASE_HOSTNAME, $DATABASE_NAME, $DATABASE_PORT, $databaseUser, $databasePass);
     echo json_encode(array("loggedIn" => $loggedIn));
-
 }
 
 handlePostRequest();

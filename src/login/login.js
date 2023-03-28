@@ -5,26 +5,26 @@ const onSubmit = (event, form) => {
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", "login.php");
-    xhr.onload = onLoad;
+    xhr.onload = () => onResultReturned(xhr);
     xhr.send(data);
 };
 
-const onLoad = () => {
+const onResultReturned = (xhr) => {
+    const errorDiv = document.getElementById("error-message");
     if (xhr.status !== 200) {
-        document.getElementById("messages").innerHTML = "<h3>Login Failed</h3>";
+        errorDiv.innerHTML = "<h3>Login Failed!</h3>";
         return;
     }
 
     const response = JSON.parse(xhr.responseText);
-    if (response.connected === "true")
-        location.href = "/index.html";
+    if (response.loggedIn) {
+        location.href = "http://localhost:8080/index.html";
+        return
+    }
 
-    else if(response.message)
-        document.getElementById("messages").innerHTML = response.message;
-
-    else
-        document.getElementById("messages").innerHTML = "<h3>Login Failed</h3>";
-
+    errorDiv.innerHTML = "<h3>Login Failed</h3>";
+    if(response.message)
+        errorDiv.innerHTML += response.message;
 };
 
 document.addEventListener("DOMContentLoaded", () => {
