@@ -1,48 +1,42 @@
 <?php
 session_start();
+$DATABASE_HOSTNAME = "";
+$DATABASE_NAME = "";
+$DATABASE_PORT = "";
 
-function testDbConnection(): bool {
-
-}
-
-function dbConn($dbo): int
-{
+function testDbConnection($host, $name, $port, $user, $pass): bool {
     try {
-        $dbPDO = new PDO($dbo[0], $dbo[1], $dbo[2]);
+        $stmt = new PDO("mysql:host=$host:$port;dbname=$name", $user, $pass);
     } catch (PDOException $e) {
-        return 1;
+        return false;
     }
-    $_SESSION["dbUsername"]=$dbo[1];
-    $_SESSION["dbPassword"]=$dbo[2];
-    // Close connection
-    $dbPDO = null;
-    return 0;
+
+    $stmt = null;
+    return true;
 }
 
-// Scan INI file for database connection information
-$iniFile = "database/dbinfo.ini";
-$dbInfo = parse_ini_file($iniFile);
-$dbHost = $dbInfo['dbhost'];
-$dbName = $dbInfo['dbname'];
-$dbPort = $dbInfo['dbport'];
-
-// Grab POST request
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Ensure login data from form is present
-    if (isset($_POST['dbPass']) && isset($_POST['dbUser'])) {
-        $dsn = "mysql:host=$dbHost:$dbPort;dbname=$dbName";
-        $dbUser = $_POST['dbUser'];
-        $dbPass = $_POST['dbPass'];
-        $dbo = [$dsn, $dbUser, $dbPass];
-        // Send login data to the db connection test and return response
-        if (dbConn($dbo) == 0) {
-            echo json_encode(array('connected'=>'true'));
-        } else {
-            echo json_encode(array('connected'=>'false'));
-        }
-    } else {
-        echo json_encode(array('message' => 'One or more fields was not filled'));
+function handlePostRequest() {
+    if ($_SERVER["REQUEST_METHOD"] != "POST") {
+        echo json_encode(array("message" => "Invalid request method"));
+        return;
     }
+
+    if (!isset($_POST["username"])) {
+        echo json_encode(array("message" => "Missing username"));
+        return;
+    }
+
+    if (!isset($_POST["password"])) {
+        echo json_encode(array("message" => "Missing password"));
+        return;
+    }
+
+    $databaseUser = $_POST["username"];
+    $databasePass = $_POST["password"];
+    $loggedIn = testDbConnection($DATABASE_HOSTNAME, $DATABASE_NAME, $DATABASE_PORT, $databaseUser, $databasePass);
+    echo json_encode(array("loggedIn" => $loggedIn));
+
 }
 
+handlePostRequest();
 ?>
