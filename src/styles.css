@@ -86,6 +86,14 @@ input {
     flex-direction: row;
 }
 
+.spacer {
+    height: 100px;
+}
+
+tr, td, th {
+    text-align: center;
+}
+
 /* td {
     padding: 10px;
 }

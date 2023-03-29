@@ -1,6 +1,6 @@
 <?php
     session_start();
-    echo "hey";
+
     if(!isset($_SESSION['username']) || !isset($_SESSION['password'])) {
         header("Location: http://localhost:8000/login", TRUE, 301);
         exit();
@@ -15,6 +15,7 @@
     <title>CP 476 Project | Grades</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="styles.css">
+    <script src="/main.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -22,6 +23,6 @@
         <?php
             include 'main.php';
         ?>
-</div>
+    </div>
 </body>
 </html>

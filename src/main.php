@@ -7,7 +7,8 @@
             <div class="tables-container" style="overflow: scroll">
                 <div>
                     <h2>Name Table</h1>
-                        <table>
+                    <div id="name-table-error-message"></div>
+                    <table>
                         <tr>
                             <th>Student ID</th>
                             <th>Student Name</th>
@@ -22,8 +23,25 @@
                     <?php
                     }
                     ?>
-                </table>
-            </div>
+                        <tr>
+                            <form id="name-table-form" method="POST">
+                                <div>
+                                    <td>
+                                        <label for="studentId">ID</label>
+                                        <input id="studentId" name="studentId" type="text" required>
+                                    </td>
+                                    <td>
+                                        <label for="studentName">Name</label>
+                                        <input id="studentName" name="studentName" type="text" required>
+                                    </td>
+                                    <td>
+                                        <input id="submit" value="Add" type="submit">
+                                    </td>
+                                </div>
+                            </form>
+                        </tr>
+                    </table>
+                </div>
             <?php
 
         $stmt = $connection->prepare("SELECT StudentId, CourseCode, Test1Grade, Test2Grade, Test3Grade, FinalTestGrade FROM CourseTable");
@@ -32,6 +50,7 @@
                 ?>
                 <div>
                     <h1>Course Table</h1>
+                    <div id="course-table-error-message"></div>
                     <table>
                         <tr>
                             <th>Student ID</th>
@@ -78,24 +97,7 @@
         return $connection;
     }
 
-    function storeData($connection) {
-        $stmt = $connection->prepare("INSERT INTO NameTable (StudentId, StudentName) VALUES (?, ?)");
-        $stmt->bind_param("ss", $studentId, $studentName);
-
-        $studentId = "123456789";
-        $studentName = "John Hay";
-        $stmt->execute();
-
-        $studentId = "223456789";
-        $studentName = "Mary Smith";
-        $stmt->execute();
-
-        echo "New records created successfully";
-        $stmt->close();
-    }
-
     $connection = setup();
-
     $username = $_SESSION['username'];
     echo "<p>You are currently signed in as $username!</p>";
     getData($connection);

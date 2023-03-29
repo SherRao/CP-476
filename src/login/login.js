@@ -11,7 +11,7 @@ const onSubmit = (event, form) => {
 const onResultReturned = (xhr) => {
     const errorDiv = document.getElementById("error-message");
     if (xhr.status !== 200) {
-        errorDiv.innerHTML = "<h3>Login Failed!</h3>";
+        errorDiv.innerHTML = "<h3 style='color: red;'>Connection failed!</h3>";
         return;
     }
 
@@ -23,9 +23,9 @@ const onResultReturned = (xhr) => {
         return
     }
 
-    errorDiv.innerHTML = "<h3>Login Failed</h3>";
+    errorDiv.innerHTML = "<h3 style='color: red;'>Login failed!</h3>";
     if(response.message)
-        errorDiv.innerHTML += response.message;
+        errorDiv.innerHTML += "<p>" + response.message + "</p>";
 };
 
 document.addEventListener("DOMContentLoaded", () => {
