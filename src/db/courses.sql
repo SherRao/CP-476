@@ -1,3 +1,4 @@
+USE cp476;
 DROP TABLE NameTable;
 DROP TABLE CourseTable;
 
