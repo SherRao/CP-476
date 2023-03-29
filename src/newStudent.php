@@ -21,8 +21,8 @@ function handlePostRequest() {
         return;
     }
 
-    if (!isset($_POST["studentId"])) {
-        echo json_encode(array("message" => "Missing student ID"));
+    if (!isset($_POST["studentId"]) || strlen((string) $_POST["studentId"]) != 9) {
+        echo json_encode(array("message" => "Missing or invalid student ID"));
         return;
     }
 

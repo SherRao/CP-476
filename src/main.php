@@ -8,10 +8,11 @@
                 <div>
                     <h2>Name Table</h1>
                     <div id="name-table-error-message"></div>
-                    <table>
+                    <table id="name-table">
                         <tr>
                             <th>Student ID</th>
                             <th>Student Name</th>
+                            <th>Delete Row</th>
                         </tr>
                     <?php
                     foreach($result as $row) {
@@ -19,6 +20,11 @@
                         <tr>
                             <td><?php echo $row["StudentId"]; ?></td>
                             <td><?php echo $row["StudentName"]; ?></td>
+                            <td><?php
+                                $id = "s" . (string) $row["StudentId"];
+                                $result = '<button id=' . $id . '>Delete</button>';
+                                echo $result;
+                            ?></td>
                         </tr>
                     <?php
                     }
@@ -49,9 +55,9 @@
         $result = $stmt->get_result();
                 ?>
                 <div>
-                    <h1>Course Table</h1>
+                    <h2>Course Table</h2>
                     <div id="course-table-error-message"></div>
-                    <table>
+                    <table id="course-table">
                         <tr>
                             <th>Student ID</th>
                             <th>Course Code</th>
@@ -59,6 +65,7 @@
                             <th>Test 2 Grade</th>
                             <th>Test 3 Grade</th>
                             <th>Final Test Grade</th>
+                            <th>Delete Row</th>
                         </tr>
                         <tr>
                     <?php
@@ -71,6 +78,11 @@
                             <td><?php echo $row["Test2Grade"]; ?></td>
                             <td><?php echo $row["Test3Grade"]; ?></td>
                             <td><?php echo $row["FinalTestGrade"]; ?></td>
+                            <td><?php
+                                $id = "c" . (string) $row["StudentId"] . (string) $row["CourseCode"];
+                                $result = '<button id=' . $id . '>Delete</button>';
+                                echo $result;
+                            ?></td>
                         </tr>
                     <?php
                     }
@@ -99,7 +111,7 @@
                                         <input id="test3Grade" name="test3Grade" type="number" required>
                                     </td>
                                     <td>
-                                        <label for="finalTestGrade">Final Test Grade</label>
+                                        <label for="finalTestGrade">Final Grade</label>
                                         <input id="finalTestGrade" name="finalTestGrade" type="number" required>
                                     </td>
                                     <td>

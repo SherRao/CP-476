@@ -58,6 +58,14 @@ input {
     font-family: 'Roboto', sans-serif;
 }
 
+tr, td, th {
+    text-align: center;
+}
+
+table {
+    border: 1px solid;
+}
+
 .app-container {
     width: 100%;
     height: 100vh;
@@ -89,26 +97,3 @@ input {
 .spacer {
     height: 100px;
 }
-
-tr, td, th {
-    text-align: center;
-}
-
-/* td {
-    padding: 10px;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    text-align: left;
-    padding: 8px;
-} */
-
-/* td {
-    padding-left: 10px;
-    padding-right: 10px;
-} */

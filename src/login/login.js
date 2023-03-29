@@ -19,7 +19,6 @@ const onResultReturned = (xhr) => {
     const response = JSON.parse(xhr.responseText);
     if (response.loggedIn) {
         location.href = "http://localhost:8000";
-        console.log("Hey")
         return
     }
 
