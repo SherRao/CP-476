@@ -19,7 +19,7 @@ CREATE TABLE CourseTable (
 
 CREATE TABLE FinalGradeTable (
     StudentId INTEGER NOT NULL,
-    StudentName VARCHAR(128) NOT NULL,
+    StudentName VARCHAR(128),
     CourseCode VARCHAR(6) NOT NULL,
     FinalGrade INTEGER NOT NULL
 );

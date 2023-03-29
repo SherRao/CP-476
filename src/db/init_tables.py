@@ -76,14 +76,13 @@ def insert_final_grades(connection, cursor):
     for row in read_csv("CourseFile.csv"):
         stripped = [item.strip() for item in row]
         student_id = stripped[0]
-        student_name = name_to_id[student_id]
         course_id = stripped[1]
-        t1 = stripped[2]
-        t2 = stripped[3]
-        t3 = stripped[4]
-        fg = stripped[5]
+        t1 = float(stripped[2])
+        t2 = float(stripped[3])
+        t3 = float(stripped[4])
+        fg = float(stripped[5])
         grade = (.2 * t1) + (.2 * t2) + (.2 * t3) + (.4 * fg)
-        cursor.execute(FINAL_GRADE_INSERT_STRING.format(student_id, student_name, course_id, grade))
+        cursor.execute(FINAL_GRADE_INSERT_STRING.format(student_id, None, course_id, grade))
         connection.commit()
 
     return

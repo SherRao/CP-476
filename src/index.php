@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="app-container">
-        <h1>Student Grade CRUD System</h1>
+        <h1>Student Grade System</h1>
         <?php
             include 'main.php';
         ?>

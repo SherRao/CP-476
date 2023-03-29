@@ -131,6 +131,37 @@
             </div>
             <?php
 
+        $stmt = $connection->prepare("SELECT StudentId, StudentName, CourseCode, FinalGrade FROM FinalGradeTable");
+        $stmt->execute();
+        $result = $stmt->get_result();
+               ?>
+                <div>
+                    <h2>Final Grade Table</h2>
+                    <table id="final-grade-table">
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Student Name</th>
+                            <th>Course Code</th>
+                            <th>Final Grade</th>
+                        </tr>
+                        <tr>
+                    <?php
+                    foreach($result as $row) {
+                    ?>
+                        <tr>
+                            <td><?php echo $row["StudentId"]; ?></td>
+                            <td><?php echo $row["StudentName"]; ?></td>
+                            <td><?php echo $row["CourseCode"]; ?></td>
+                            <td><?php echo $row["FinalGrade"]; ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                    </table>
+                </div>
+            </div>
+            <?php
+
         $stmt->close();
     }
 
