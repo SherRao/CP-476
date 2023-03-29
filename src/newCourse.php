@@ -26,8 +26,28 @@ function handlePostRequest() {
         return;
     }
 
-    if (!isset($_POST["studentName"])) {
-        echo json_encode(array("message" => "Missing student name"));
+    if (!isset($_POST["courseCode"])) {
+        echo json_encode(array("message" => "Missing course code"));
+        return;
+    }
+
+    if (!isset($_POST["test1Grade"])) {
+        echo json_encode(array("message" => "Missing test 1 grade"));
+        return;
+    }
+
+    if (!isset($_POST["test2Grade"])) {
+        echo json_encode(array("message" => "Missing test 2 grade"));
+        return;
+    }
+
+    if (!isset($_POST["test3Grade"])) {
+        echo json_encode(array("message" => "Missing test 3 grade"));
+        return;
+    }
+
+    if (!isset($_POST["finalTestGrade"])) {
+        echo json_encode(array("message" => "Missing final test grade"));
         return;
     }
 
@@ -44,8 +64,10 @@ function handlePostRequest() {
     $DATABASE_NAME = "cp476";
     $DATABASE_PORT = "3306";
 
-    $success = storeData($studentId, $studentName, $test1Grade, $test2Grade, $test3Grade, $finalTestGrade,
-    $DATABASE_HOSTNAME, $DATABASE_NAME, $DATABASE_PORT, $databaseUsername, $databasePassword);
+    $success = storeData(
+        $studentId, $courseCode, $test1Grade, $test2Grade, $test3Grade, $finalTestGrade,
+        $DATABASE_HOSTNAME, $DATABASE_NAME, $DATABASE_PORT, $databaseUsername, $databasePassword
+    );
     echo json_encode(array("status" => $success));
 }
 

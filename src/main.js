@@ -14,7 +14,7 @@ const onCourseTableSubmit = (event, form) => {
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", "/newCourse.php");
-    xhr.onload = () => onResultReturned(xhr, "course-table-error-message");
+    xhr.onload = () => onResultResponse(xhr, "course-table-error-message");
     xhr.send(data);
 };
 
