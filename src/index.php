@@ -1,5 +1,10 @@
 <?php
-session_start();
+    session_start();
+    echo "hey";
+    if(!isset($_SESSION['username']) || !isset($_SESSION['password'])) {
+        header("Location: http://localhost:8000/login", TRUE, 301);
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -7,14 +12,19 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CP 476 Project</title>
+    <title>CP 476 Project - Student Grade Viewer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
     <div class="app-container">
         <h1>Student Grade Calculator</h1>
-        <?php include 'main.php';?>
+        <div class="main-container">
+
+        </div>
+        <?php
+            // include 'main.php';
+        ?>
     </div>
 </body>
 </html>
