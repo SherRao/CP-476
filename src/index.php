@@ -12,9 +12,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CP 476 Project - Student Grade Viewer</title>
+    <title>CP 476 Project | Grades</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
     <div class="app-container">
@@ -23,7 +23,7 @@
 
         </div>
         <?php
-            // include 'main.php';
+            include 'main.php';
         ?>
     </div>
 </body>
