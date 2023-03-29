@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     if(!isset($_SESSION['username']) || !isset($_SESSION['password'])) {
         header("Location: http://localhost:8000/login", TRUE, 301);
         exit();

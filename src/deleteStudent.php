@@ -24,6 +24,10 @@ function deleteFromCourseTable($studentId, $courseCode, $host, $name, $port, $us
     $stmt->bind_param("is", $studentId, $courseCode);
     $stmt->execute();
 
+    // $stmt = $conn->prepare("DELETE FROM FinalGradeTable WHERE StudentId=? AND CourseCode=?");
+    // $stmt->bind_param("is", $studentId, $courseCode);
+    // $stmt->execute();
+
     $stmt->close();
     $conn->close();
     return true;

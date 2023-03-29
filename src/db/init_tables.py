@@ -7,6 +7,9 @@ NAME_FILE_FILENAME = "NameFile.csv"
 COURSE_FILE_FILENAME = "CourseFile.csv"
 STUDENT_INSERT_STRING = "INSERT INTO NameTable VALUES({},'{}')"
 COURSE_INSERT_STRING = "INSERT INTO CourseTable VALUES({},'{}',{},{},{},{})"
+FINAL_GRADE_INSERT_STRING = "INSERT INTO FinalGradeTable VALUES({},'{}',{},{})"
+
+name_to_id = {}
 
 
 def main():
@@ -38,6 +41,10 @@ def main():
 
     print("Inserting data into course table")
     insert_records(connection, cursor, COURSE_FILE_FILENAME, COURSE_INSERT_STRING)
+
+    print("Inserting data into final grade table")
+    insert_final_grades(connection, cursor);
+
     cursor.close()
     connection.close()
     return
@@ -55,14 +62,31 @@ def read_csv(filename):
 
 def insert_records(connection, cursor, filename, input_string, output=False):
     for row in read_csv(filename):
-        stripped_row = [item.strip() for item in row]
+        stripped = [item.strip() for item in row]
         if output:
-            print(input_string.format(*stripped_row))
-        cursor.execute(input_string.format(*stripped_row))
+            print(input_string.format(*stripped))
+
+        cursor.execute(input_string.format(*stripped))
         connection.commit()
 
     return
 
+
+def insert_final_grades(connection, cursor):
+    for row in read_csv("CourseFile.csv"):
+        stripped = [item.strip() for item in row]
+        student_id = stripped[0]
+        student_name = name_to_id[student_id]
+        course_id = stripped[1]
+        t1 = stripped[2]
+        t2 = stripped[3]
+        t3 = stripped[4]
+        fg = stripped[5]
+        grade = (.2 * t1) + (.2 * t2) + (.2 * t3) + (.4 * fg)
+        cursor.execute(FINAL_GRADE_INSERT_STRING.format(student_id, student_name, course_id, grade))
+        connection.commit()
+
+    return
 
 if (__name__ == "__main__"):
     main();

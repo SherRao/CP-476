@@ -8,11 +8,11 @@ function storeData($studentId, $studentName, $host, $name, $port, $user, $pass):
 
     $stmt = $conn->prepare("INSERT INTO NameTable (StudentId, StudentName) VALUES (?, ?)");
     $stmt->bind_param("is", $studentId, $studentName);
-    $stmt->execute();
+    $result = $stmt->execute();
 
     $stmt->close();
     $conn->close();
-    return true;
+    return $result;
 }
 
 function handlePostRequest() {
@@ -21,7 +21,7 @@ function handlePostRequest() {
         return;
     }
 
-    if (!isset($_POST["studentId"]) || strlen((string) $_POST["studentId"]) != 9) {
+    if (!isset($_POST["studentId-name"]) || strlen((string) $_POST["studentId-name"]) != 9) {
         echo json_encode(array("message" => "Missing or invalid student ID"));
         return;
     }
@@ -31,7 +31,7 @@ function handlePostRequest() {
         return;
     }
 
-    $studentId = $_POST["studentId"];
+    $studentId = $_POST["studentId-name"];
     $studentName = $_POST["studentName"];
 
     $databaseUsername = $_SESSION["username"];
@@ -40,7 +40,11 @@ function handlePostRequest() {
     $DATABASE_NAME = "cp476";
     $DATABASE_PORT = "3306";
 
-    $success = storeData($studentId, $studentName, $DATABASE_HOSTNAME, $DATABASE_NAME, $DATABASE_PORT, $databaseUsername, $databasePassword);
+    $success = storeData(
+        $studentId, $studentName,
+        $DATABASE_HOSTNAME, $DATABASE_NAME, $DATABASE_PORT, $databaseUsername, $databasePassword
+    );
+
     echo json_encode(array("status" => $success));
 }
 

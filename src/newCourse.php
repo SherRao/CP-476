@@ -21,7 +21,7 @@ function handlePostRequest() {
         return;
     }
 
-    if (!isset($_POST["studentId"]) || strlen((string) $_POST["studentId"]) != 9) {
+    if (!isset($_POST["studentId-course"]) || strlen((string) $_POST["studentId-course"]) != 9) {
         echo json_encode(array("message" => "Missing or invalid student ID"));
         return;
     }
@@ -51,7 +51,7 @@ function handlePostRequest() {
         return;
     }
 
-    $studentId = $_POST["studentId"];
+    $studentId = $_POST["studentId-course"];
     $courseCode = $_POST["courseCode"];
     $test1Grade = $_POST["test1Grade"];
     $test2Grade = $_POST["test2Grade"];
@@ -68,6 +68,7 @@ function handlePostRequest() {
         $studentId, $courseCode, $test1Grade, $test2Grade, $test3Grade, $finalTestGrade,
         $DATABASE_HOSTNAME, $DATABASE_NAME, $DATABASE_PORT, $databaseUsername, $databasePassword
     );
+
     echo json_encode(array("status" => $success));
 }
 
