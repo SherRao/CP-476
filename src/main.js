@@ -38,9 +38,9 @@ const onResultResponse = (xhr, errorDivId) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    const nameForm = document.getElementById("name-table-error-message");
+    const nameForm = document.getElementById("name-table-form");
     nameForm.addEventListener("submit", (event) => onNameTableSubmit(event, nameForm));
 
-    const courseForm = document.getElementById("course-table-error-message");
+    const courseForm = document.getElementById("course-table-form");
     courseForm.addEventListener("submit", (event) => onCourseTableSubmit(event, courseForm));
 });
