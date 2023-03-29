@@ -1,8 +1,6 @@
 <?php
 session_start();
-$DATABASE_HOSTNAME = "";
-$DATABASE_NAME = "";
-$DATABASE_PORT = "";
+
 
 function testDbConnection($host, $name, $port, $user, $pass): bool {
     try {
@@ -33,7 +31,15 @@ function handlePostRequest() {
 
     $databaseUser = $_POST["username"];
     $databasePass = $_POST["password"];
+    $DATABASE_HOSTNAME = "localhost";
+    $DATABASE_NAME = "cp476";
+    $DATABASE_PORT = "3306";
     $loggedIn = testDbConnection($DATABASE_HOSTNAME, $DATABASE_NAME, $DATABASE_PORT, $databaseUser, $databasePass);
+    if($loggedIn) {
+        $_SESSION["username"] = $databaseUser;
+        $_SESSION["password"] = $databasePass;
+    }
+
     echo json_encode(array("loggedIn" => $loggedIn));
 }
 

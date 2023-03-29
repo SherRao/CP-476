@@ -1,10 +1,9 @@
 const onSubmit = (event, form) => {
     event.preventDefault();
-
     const data = new FormData(form);
     const xhr = new XMLHttpRequest();
 
-    xhr.open("POST", "login.php");
+    xhr.open("POST", "/login/login.php");
     xhr.onload = () => onResultReturned(xhr);
     xhr.send(data);
 };
@@ -16,9 +15,11 @@ const onResultReturned = (xhr) => {
         return;
     }
 
+    console.log(xhr.responseText);
     const response = JSON.parse(xhr.responseText);
     if (response.loggedIn) {
-        location.href = "http://localhost:8080/index.html";
+        location.href = "http://localhost:8000";
+        console.log("Hey")
         return
     }
 
