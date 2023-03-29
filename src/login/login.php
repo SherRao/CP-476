@@ -1,15 +1,12 @@
 <?php
 session_start();
 
-
 function testDbConnection($host, $name, $port, $user, $pass): bool {
-    try {
-        $stmt = new PDO("mysql:host=$host:$port;dbname=$name", $user, $pass);
-    } catch (PDOException $e) {
+    $connection = new mysqli($DATABASE_HOSTNAME, $databaseUsername, $databasePassword, $DATABASE_NAME);
+    if ($connection->connect_errno)
         return false;
-    }
 
-    $stmt = null;
+    $connection->close();
     return true;
 }
 

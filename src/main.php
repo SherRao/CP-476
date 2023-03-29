@@ -31,23 +31,23 @@
                         ?>
                     </table>
                     <table>
-                    <tr>
-                    <form id="name-table-form" method="POST">
-                        <div>
-                            <td>
-                                <label for="studentId-name">ID</label>
-                                <input id="studentId-name" name="studentId-name" type="number" required>
-                            </td>
-                            <td>
-                                <label for="studentName">Name</label>
-                                <input id="studentName" name="studentName" type="text" required>
-                            </td>
-                            <td>
-                                <input id="submit-name" value="Add" type="submit">
-                            </td>
-                        </div>
-                    </form>
-                    </tr>
+                        <tr>
+                        <form id="name-table-form" method="POST">
+                            <div>
+                                <td>
+                                    <label for="studentId-name">ID</label>
+                                    <input id="studentId-name" name="studentId-name" type="number" required>
+                                </td>
+                                <td>
+                                    <label for="studentName">Name</label>
+                                    <input id="studentName" name="studentName" type="text" required>
+                                </td>
+                                <td>
+                                    <input id="submit-name" value="Add" type="submit">
+                                </td>
+                            </div>
+                        </form>
+                        </tr>
                     </table>
                 </div>
             <?php
@@ -94,37 +94,37 @@
                     </table>
                     <table>
                     <tr>
-                    <form id="course-table-form" method="POST">
-                        <div>
-                            <td>
-                                <label for="studentId-course">ID</label>
-                                <input id="studentId-course" name="studentId-course" type="text" required>
-                            </td>
-                            <td>
-                                <label for="courseCode">Course Code</label>
-                                <input id="courseCode" name="courseCode" type="text" required>
-                            </td>
-                            <td>
-                                <label for="test1Grade">Test 1 Grade</label>
-                                <input id="test1Grade" name="test1Grade" type="number" required>
-                            </td>
-                            <td>
-                                <label for="test2Grade">Test 2 Grade</label>
-                                <input id="test2Grade" name="test2Grade" type="number" required>
-                            </td>
-                            <td>
-                                <label for="test3Grade">Test 3 Grade</label>
-                                <input id="test3Grade" name="test3Grade" type="number" required>
-                            </td>
-                            <td>
-                                <label for="finalTestGrade">Final Grade</label>
-                                <input id="finalTestGrade" name="finalTestGrade" type="number" required>
-                            </td>
-                            <td>
-                                <input id="submit-course" value="Add" type="submit">
-                            </td>
-                        </div>
-                    </form>
+                        <form id="course-table-form" method="POST">
+                            <div>
+                                <td>
+                                    <label for="studentId-course">ID</label>
+                                    <input id="studentId-course" name="studentId-course" type="text" required>
+                                </td>
+                                <td>
+                                    <label for="courseCode">Course Code</label>
+                                    <input id="courseCode" name="courseCode" type="text" required>
+                                </td>
+                                <td>
+                                    <label for="test1Grade">Test 1 Grade</label>
+                                    <input id="test1Grade" name="test1Grade" type="number" required>
+                                </td>
+                                <td>
+                                    <label for="test2Grade">Test 2 Grade</label>
+                                    <input id="test2Grade" name="test2Grade" type="number" required>
+                                </td>
+                                <td>
+                                    <label for="test3Grade">Test 3 Grade</label>
+                                    <input id="test3Grade" name="test3Grade" type="number" required>
+                                </td>
+                                <td>
+                                    <label for="finalTestGrade">Final Grade</label>
+                                    <input id="finalTestGrade" name="finalTestGrade" type="number" required>
+                                </td>
+                                <td>
+                                    <input id="submit-course" value="Add" type="submit">
+                                </td>
+                            </div>
+                        </form>
                     </tr>
                     </table>
                 </div>

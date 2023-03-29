@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="app-container">
-        <h1 style="margin-top: 100px">Student Grade Calculator</h1>
+        <h1 style="margin-top: 100px">Student Grade CRUD System</h1>
         <div class="login-container">
             <h2>Please Log In</h2>
             <div id="error-message"></div>
