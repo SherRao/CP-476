@@ -117,7 +117,7 @@
                                     <input id="test3Grade" name="test3Grade" type="number" required>
                                 </td>
                                 <td>
-                                    <label for="finalTestGrade">Final Grade</label>
+                                    <label for="finalTestGrade">Final Test Grade</label>
                                     <input id="finalTestGrade" name="finalTestGrade" type="number" required>
                                 </td>
                                 <td>
@@ -142,7 +142,7 @@
                             <th>Student ID</th>
                             <th>Student Name</th>
                             <th>Course Code</th>
-                            <th>Final Grade</th>
+                            <th>Final Test Grade</th>
                         </tr>
                         <tr>
                     <?php

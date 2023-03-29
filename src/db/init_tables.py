@@ -82,7 +82,7 @@ def insert_final_grades(connection, cursor):
         t3 = float(stripped[4])
         fg = float(stripped[5])
         grade = (.2 * t1) + (.2 * t2) + (.2 * t3) + (.4 * fg)
-        cursor.execute(FINAL_GRADE_INSERT_STRING.format(student_id, None, course_id, grade))
+        cursor.execute(FINAL_GRADE_INSERT_STRING.format(student_id, "NUL", course_id, grade))
         connection.commit()
 
     return

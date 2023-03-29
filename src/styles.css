@@ -60,6 +60,7 @@ input {
 
 tr, td, th {
     text-align: center;
+    min-width: "125px";
 }
 
 table {

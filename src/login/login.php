@@ -2,11 +2,15 @@
 session_start();
 
 function testDbConnection($host, $name, $port, $user, $pass): bool {
-    $connection = new mysqli($DATABASE_HOSTNAME, $databaseUsername, $databasePassword, $DATABASE_NAME);
-    if ($connection->connect_errno)
-        return false;
+    try {
+        $connection = new mysqli($host, $user, $pass, $name);
+        if ($connection->connect_errno)
+            return false;
 
-    $connection->close();
+        $connection->close();
+    }catch(Exception $e) {
+        return false;
+    }
     return true;
 }
 
