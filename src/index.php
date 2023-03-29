@@ -19,12 +19,9 @@
 <body>
     <div class="app-container">
         <h1>Student Grade Calculator</h1>
-        <div class="main-container">
-
-        </div>
         <?php
             include 'main.php';
         ?>
-    </div>
+</div>
 </body>
 </html>

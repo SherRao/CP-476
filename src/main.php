@@ -1,16 +1,13 @@
 <?php
-    $username = $_SESSION['username'];
-    echo "<p>You are currently signed in as $username!</p>";
-
     function getData($connection) {
         $stmt = $connection->prepare("SELECT StudentId, StudentName FROM NameTable");
         $stmt->execute();
         $result = $stmt->get_result();
             ?>
-            <div class="tables-container">
+            <div class="tables-container" style="overflow: scroll">
                 <div>
                     <h2>Name Table</h1>
-                    <table>
+                        <table>
                         <tr>
                             <th>Student ID</th>
                             <th>Student Name</th>
@@ -44,6 +41,7 @@
                             <th>Test 3 Grade</th>
                             <th>Final Test Grade</th>
                         </tr>
+                        <tr>
                     <?php
                     foreach($result as $row) {
                     ?>
@@ -97,6 +95,10 @@
     }
 
     $connection = setup();
+
+    $username = $_SESSION['username'];
+    echo "<p>You are currently signed in as $username!</p>";
     getData($connection);
+
     $connection->close();
 ?>

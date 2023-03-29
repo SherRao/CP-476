@@ -80,12 +80,13 @@ input {
     width: 100%;
     height: 100vh;
     display: flex;
+
     justify-content: center;
-    align-items: center;
+    align-items: top;
     flex-direction: row;
 }
 
-td {
+/* td {
     padding: 10px;
 }
 
@@ -97,4 +98,9 @@ table {
 th, td {
     text-align: left;
     padding: 8px;
-}
+} */
+
+/* td {
+    padding-left: 10px;
+    padding-right: 10px;
+} */
